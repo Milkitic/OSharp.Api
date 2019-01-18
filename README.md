@@ -1,8 +1,10 @@
 # OSharp
+![](https://img.shields.io/badge/.NETStandard-2.0-blue.svg)
+![](https://img.shields.io/badge/license-MIT-green.svg)
 
-A C# Library to access osu!api and osu!api v2.
+**Light-Weighted** and **Easy-To-Use** .NET Standard Library to access osu!api and osu!api v2.
 
-*This repo was used to be a fork version of CSharpOsu. But I rewrote entirly and now it is an independent library.*
+*This repo was used to be a fork version of [CSharpOsu](https://github.com/Xferno2/CSharpOsu). But I rewrote entirly and now it is an independent library.*
 
 ### Quick Start (api v1):
 ```c#
