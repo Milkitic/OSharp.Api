@@ -1,4 +1,4 @@
-# OsuSharp
+# OSharp
 
 A C# Library to access osu!api and osu!api v2.
 
