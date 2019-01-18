@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace CSharpOsu.V1.Internal
+namespace OsuSharp.V1.Internal
 {
     internal static class OsrBinaryUtility
     {

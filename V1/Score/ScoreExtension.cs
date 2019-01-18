@@ -1,6 +1,6 @@
-﻿using CSharpOsu.V1.Beatmap;
+﻿using OsuSharp.V1.Beatmap;
 
-namespace CSharpOsu.V1.Score
+namespace OsuSharp.V1.Score
 {
     public static class ScoreExtension
     {

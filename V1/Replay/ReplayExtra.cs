@@ -1,10 +1,10 @@
-﻿using CSharpOsu.V1.Beatmap;
-using CSharpOsu.V1.Internal;
-using CSharpOsu.V1.Score;
-using System;
+﻿using System;
 using System.IO;
+using OsuSharp.V1.Beatmap;
+using OsuSharp.V1.Internal;
+using OsuSharp.V1.Score;
 
-namespace CSharpOsu.V1.Replay
+namespace OsuSharp.V1.Replay
 {
     public class ReplayExtra
     {

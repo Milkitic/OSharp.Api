@@ -1,7 +1,7 @@
-﻿using CSharpOsu.V1.Beatmap;
-using CSharpOsu.V1.User;
+﻿using OsuSharp.V1.Beatmap;
+using OsuSharp.V1.User;
 
-namespace CSharpOsu.V1.Internal
+namespace OsuSharp.V1.Internal
 {
     internal static class Link
     {

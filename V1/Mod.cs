@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSharpOsu.V1
+namespace OsuSharp.V1
 {
     [Flags]
     public enum Mod

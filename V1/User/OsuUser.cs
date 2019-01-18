@@ -1,8 +1,8 @@
 ﻿using System;
-using CSharpOsu.V1.Internal;
 using Newtonsoft.Json;
+using OsuSharp.V1.Internal;
 
-namespace CSharpOsu.V1.User
+namespace OsuSharp.V1.User
 {
 
     public class OsuUser

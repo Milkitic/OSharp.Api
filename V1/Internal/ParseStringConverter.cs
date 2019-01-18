@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace CSharpOsu.V1.Internal
+namespace OsuSharp.V1.Internal
 {
     internal class ParseStringConverter : JsonConverter
     {

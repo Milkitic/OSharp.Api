@@ -1,4 +1,4 @@
-﻿namespace CSharpOsu.V1.Beatmap
+﻿namespace OsuSharp.V1.Beatmap
 {
     public class ConvertibleGameMode
     {

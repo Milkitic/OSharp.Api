@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace CSharpOsu.V1
+namespace OsuSharp.V1
 {
     public enum GameMode
     {

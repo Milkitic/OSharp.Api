@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CSharpOsu.HttpClient
+namespace OsuSharp.HttpClient
 {
     internal static class HttpUtility
     {

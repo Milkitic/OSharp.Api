@@ -1,4 +1,4 @@
-﻿namespace CSharpOsu.V1.User
+﻿namespace OsuSharp.V1.User
 {
     public sealed class UserId : UserComponent
     {

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Diagnostics.Contracts;
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -10,13 +9,13 @@ using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 
-namespace CSharpOsu.HttpClient
+namespace OsuSharp.HttpClient
 {
     /// <summary>
     /// Helper class of HttpClient.
     /// To increase the efficiency, please consider to initialize this class infrequently.
     /// </summary>
-    public class HttpClientUtility
+    internal class HttpClientUtility
     {
         public static readonly string CacheImagePath =
             Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "imageCache");

@@ -1,8 +1,8 @@
 ﻿using System;
-using CSharpOsu.V1.Internal;
 using Newtonsoft.Json;
+using OsuSharp.V1.Internal;
 
-namespace CSharpOsu.V1.Beatmap
+namespace OsuSharp.V1.Beatmap
 {
     public class OsuBeatmap
     {

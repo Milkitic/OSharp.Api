@@ -1,4 +1,4 @@
-﻿namespace CSharpOsu.V1.Score
+﻿namespace OsuSharp.V1.Score
 {
     public interface IScore
     {

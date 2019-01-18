@@ -1,4 +1,4 @@
-﻿namespace CSharpOsu.V1
+﻿namespace OsuSharp.V1
 {
     public class Key
     {

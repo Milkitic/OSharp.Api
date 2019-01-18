@@ -1,4 +1,4 @@
-﻿namespace CSharpOsu.HttpClient
+﻿namespace OsuSharp.HttpClient
 {
     internal enum HttpContentType
     {

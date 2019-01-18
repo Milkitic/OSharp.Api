@@ -1,6 +1,6 @@
-﻿using CSharpOsu.V1.Beatmap;
+﻿using OsuSharp.V1.Beatmap;
 
-namespace CSharpOsu.V1.Internal
+namespace OsuSharp.V1.Internal
 {
     internal static class EnumExtension
     {
