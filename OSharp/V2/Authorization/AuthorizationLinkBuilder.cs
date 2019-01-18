@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 
-namespace OSharp.V2
+namespace OSharp.V2.Authorization
 {
     public class AuthorizationLinkBuilder
     {

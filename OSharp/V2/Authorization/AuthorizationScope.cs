@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
-namespace OSharp.V2
+namespace OSharp.V2.Authorization
 {
     [Flags]
     public enum AuthorizationScope
