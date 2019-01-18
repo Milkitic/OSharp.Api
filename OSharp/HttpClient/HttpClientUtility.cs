@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -50,7 +51,37 @@ namespace OSharp.HttpClient
         }
 
         /// <summary>
-        /// Post with nothing.
+        /// GET with value-pairs.
+        /// </summary>
+        /// <param name="url">Http uri.</param>
+        /// <param name="args">Parameter dictionary.</param>
+        /// <param name="argsHeader">Header dictionary.</param>
+        /// <returns></returns>
+        public string HttpGet(
+            string url,
+            IDictionary<string, string> args = null,
+            IDictionary<string, string> argsHeader = null)
+        {
+            return GetResult(url, args, argsHeader, RequestMethod.Get);
+        }
+
+        /// <summary>
+        /// DELETE with value-pairs.
+        /// </summary>
+        /// <param name="url">Http uri.</param>
+        /// <param name="args">Parameter dictionary.</param>
+        /// <param name="argsHeader">Header dictionary.</param>
+        /// <returns></returns>
+        public string HttpDelete(
+            string url,
+            IDictionary<string, string> args = null,
+            IDictionary<string, string> argsHeader = null)
+        {
+            return GetResult(url, args, argsHeader, RequestMethod.Delete);
+        }
+
+        /// <summary>
+        /// POST with nothing.
         /// </summary>
         /// <param name="url">Http uri.</param>
         /// <returns></returns>
@@ -58,39 +89,72 @@ namespace OSharp.HttpClient
         {
             HttpContent content = new StringContent("");
             content.Headers.ContentType = new MediaTypeHeaderValue(HttpContentType.Form.GetContentType());
-            return HttpPost(url, content);
+            return HttpRequest(url, content, RequestMethod.Post);
         }
 
         /// <summary>
-        /// Post with Json.
+        /// POST with Json.
         /// </summary>
         /// <param name="url">Http uri.</param>
         /// <param name="postJson">json string.</param>
         /// <returns></returns>
-        public string HttpPost(string url, string postJson)
+        public string HttpPostJson(string url, string postJson)
         {
             HttpContent content = new StringContent(postJson);
             content.Headers.ContentType = new MediaTypeHeaderValue(HttpContentType.Json.GetContentType());
-            return HttpPost(url, content);
+            return HttpRequest(url, content, RequestMethod.Post);
         }
 
         /// <summary>
-        /// Post with Json.
+        /// POST with Json.
         /// </summary>
         /// <param name="url">Http uri.</param>
         /// <param name="args">Parameter dictionary.</param>
         /// <param name="argsHeader">Header dictionary.</param>
         /// <returns></returns>
-        public string HttpPost(string url,
-            IDictionary<string, string> args,
+        public string HttpPostJson(string url,
+            IDictionary<string, string> args = null,
             IDictionary<string, string> argsHeader = null)
+        {
+            HttpContent content = GetHttpContent(HttpContentType.Json, args, argsHeader, true);
+            return HttpRequest(url, content, RequestMethod.Post);
+        }
+
+        /// <summary>
+        /// PUT with Json.
+        /// </summary>
+        /// <param name="url">Http uri.</param>
+        /// <param name="args">Parameter dictionary.</param>
+        /// <param name="argsHeader">Header dictionary.</param>
+        /// <returns></returns>
+        public string HttpPutJson(string url,
+            IDictionary<string, string> args = null,
+            IDictionary<string, string> argsHeader = null)
+        {
+            HttpContent content = GetHttpContent(HttpContentType.Json, args, argsHeader, true);
+            return HttpRequest(url, content, RequestMethod.Put);
+        }
+
+        private static HttpContent GetHttpContent(
+            HttpContentType contentType,
+            IDictionary<string, string> args,
+            IDictionary<string, string> argsHeader,
+            bool json)
         {
             HttpContent content;
             if (args != null)
             {
-                var jsonStr = Newtonsoft.Json.JsonConvert.SerializeObject(args);
-                content = new StringContent(jsonStr);
-                content.Headers.ContentType = new MediaTypeHeaderValue(HttpContentType.Json.GetContentType());
+                if (json)
+                {
+                    var jsonStr = Newtonsoft.Json.JsonConvert.SerializeObject(args);
+                    content = new StringContent(jsonStr);
+                    content.Headers.ContentType = new MediaTypeHeaderValue(contentType.GetContentType());
+                }
+                else
+                {
+                    content = new StringContent(string.Join("&", args.Select(k => $"{k.Key}={k.Value}")));
+                    content.Headers.ContentType = new MediaTypeHeaderValue(contentType.GetContentType());
+                }
             }
             else
             {
@@ -104,28 +168,38 @@ namespace OSharp.HttpClient
                     content.Headers.Add(item.Key, item.Value);
             }
 
-            return HttpPost(url, content);
+            return content;
         }
 
-        /// <summary>
-        /// Get with value-pairs.
-        /// </summary>
-        /// <param name="url">Http uri.</param>
-        /// <param name="args">Parameter dictionary.</param>
-        /// <param name="argsHeader">Header dictionary.</param>
-        /// <returns></returns>
-        public string HttpGet(string url, IDictionary<string, string> args = null, IDictionary<string, string> argsHeader = null)
+        private string GetResult(
+            string url,
+            IDictionary<string, string> args,
+            IDictionary<string, string> argsHeader,
+            RequestMethod requestMethod)
         {
+            string responseStr = null;
+            string fullUrl = url + args?.ToUrlParamString();
+
             for (int i = 0; i < RetryCount; i++)
             {
+                HttpRequestMessage message = null;
                 try
                 {
-                    if (args != null)
+                    switch (requestMethod)
                     {
-                        url = url + args.ToUrlParamString();
+                        case RequestMethod.Get:
+                            message = new HttpRequestMessage(HttpMethod.Get, fullUrl);
+                            break;
+                        case RequestMethod.Delete:
+                            message = new HttpRequestMessage(HttpMethod.Delete, fullUrl);
+                            break;
+                        case RequestMethod.Post:
+                        case RequestMethod.Put:
+                            throw new NotSupportedException();
+                        default:
+                            throw new ArgumentOutOfRangeException(nameof(requestMethod), requestMethod, null);
                     }
 
-                    var message = new HttpRequestMessage(HttpMethod.Get, url);
                     if (argsHeader != null)
                     {
                         foreach (var item in argsHeader)
@@ -133,30 +207,58 @@ namespace OSharp.HttpClient
                             message.Headers.Add(item.Key, item.Value);
                         }
                     }
-                    CancellationTokenSource cts = new CancellationTokenSource(Timeout);
-                    HttpResponseMessage response = _httpClient.SendAsync(message, cts.Token).Result;
 
-                    return response.Content.ReadAsStringAsync().Result;
+                    HttpResponseMessage response;
+                    using (var cts = new CancellationTokenSource(Timeout))
+                    {
+                        response = _httpClient.SendAsync(message, cts.Token).Result;
+                    }
+
+                    responseStr = response.Content.ReadAsStringAsync().Result;
+                    return responseStr;
                 }
                 catch (Exception)
                 {
-                    Debug.WriteLine($"Tried {i + 1} time{(i + 1 > 1 ? "s" : "")} for timed out. (>{Timeout}ms): " + url);
+                    Debug.WriteLine(string.Format("Tried {0} time{1} for timed out. (>{2}ms): {3}",
+                        i + 1,
+                        i + 1 > 1 ? "s" : "",
+                        Timeout,
+                        fullUrl)
+                    );
                     if (i == RetryCount - 1)
                         throw;
                 }
+                finally
+                {
+                    message?.Dispose();
+                }
             }
 
-            return null;
+            return responseStr;
         }
 
-        private string HttpPost(string url, HttpContent content)
+        private string HttpRequest(string url, HttpContent content, RequestMethod requestMethod)
         {
             string responseStr = null;
             for (int i = 0; i < RetryCount; i++)
             {
                 try
                 {
-                    var response = _httpClient.PostAsync(url, content).Result;
+                    HttpResponseMessage response;
+                    switch (requestMethod)
+                    {
+                        case RequestMethod.Post:
+                            response = _httpClient.PostAsync(url, content).Result;
+                            break;
+                        case RequestMethod.Put:
+                            response = _httpClient.PutAsync(url, content).Result;
+                            break;
+                        case RequestMethod.Get:
+                        case RequestMethod.Delete:
+                            throw new NotSupportedException();
+                        default:
+                            throw new ArgumentOutOfRangeException(nameof(requestMethod), requestMethod, null);
+                    }
                     // ensure if the request is success.
                     response.EnsureSuccessStatusCode();
                     // read the Json asynchronously.
@@ -168,7 +270,12 @@ namespace OSharp.HttpClient
                 }
                 catch (Exception)
                 {
-                    Debug.WriteLine($"Tried {i + 1} time{(i + 1 > 1 ? "s" : "")} for timed out. (>{Timeout}ms): " + url);
+                    Debug.WriteLine(string.Format("Tried {0} time{1} for timed out. (>{2}ms): {3}",
+                        i + 1,
+                        i + 1 > 1 ? "s" : "",
+                        Timeout,
+                        url)
+                    );
                     if (i == RetryCount - 1)
                         throw;
                 }

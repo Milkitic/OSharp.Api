@@ -1,11 +1,15 @@
-﻿using System;
-using System.Linq;
-using OSharp.V1;
+﻿using OSharp.V1;
 using OSharp.V1.Beatmap;
 using OSharp.V1.MultiPlayer;
 using OSharp.V1.Replay;
 using OSharp.V1.Score;
 using OSharp.V1.User;
+using OSharp.V2;
+using OSharp.V2.Authorization;
+using OSharp.V2.Client;
+using System;
+using System.Linq;
+using OsuClient = OSharp.V1.OsuClient;
 
 namespace OSharpTest
 {
