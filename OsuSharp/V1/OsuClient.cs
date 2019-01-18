@@ -287,15 +287,15 @@ namespace OsuSharp.V1
         /// Retrieve information about replay data of the specified user's score on a map.
         /// </summary>
         /// <param name="gameMode">The mode the score was played in.</param>
-        /// <param name="userName">The user that has played the beatmap.</param>
+        /// <param name="nameOrId">The user that has played the beatmap.</param>
         /// <param name="beatmapId">The beatmap ID in which the replay was played.</param>
         /// <returns>Fetched replay data.</returns>
         public OsuReplay GetReplay(
             GameMode gameMode,
-            UserComponent userName,
+            UserComponent nameOrId,
             BeatmapId beatmapId)
         {
-            string replay = Key.CreateReplayLink(gameMode, beatmapId, userName);
+            string replay = Key.CreateReplayLink(gameMode, beatmapId, nameOrId);
             string json = GetJson(replay);
             OsuReplay obj = JsonConvert.DeserializeObject<OsuReplay>(json);
             return obj;
