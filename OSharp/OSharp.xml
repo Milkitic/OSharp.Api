@@ -1,0 +1,735 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OSharp</name>
+    </assembly>
+    <members>
+        <member name="T:OSharp.HttpClient.HttpClientUtility">
+            <summary>
+            Helper class of HttpClient.
+            To increase the efficiency, please consider to initialize this class infrequently.
+            </summary>
+        </member>
+        <member name="M:OSharp.HttpClient.HttpClientUtility.HttpGet(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            GET with value-pairs.
+            </summary>
+            <param name="url">Http uri.</param>
+            <param name="args">Parameter dictionary.</param>
+            <param name="argsHeader">Header dictionary.</param>
+            <returns></returns>
+        </member>
+        <member name="M:OSharp.HttpClient.HttpClientUtility.HttpDelete(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            DELETE with value-pairs.
+            </summary>
+            <param name="url">Http uri.</param>
+            <param name="args">Parameter dictionary.</param>
+            <param name="argsHeader">Header dictionary.</param>
+            <returns></returns>
+        </member>
+        <member name="M:OSharp.HttpClient.HttpClientUtility.HttpPost(System.String)">
+            <summary>
+            POST with nothing.
+            </summary>
+            <param name="url">Http uri.</param>
+            <returns></returns>
+        </member>
+        <member name="M:OSharp.HttpClient.HttpClientUtility.HttpPostJson(System.String,System.String)">
+            <summary>
+            POST with Json.
+            </summary>
+            <param name="url">Http uri.</param>
+            <param name="postJson">json string.</param>
+            <returns></returns>
+        </member>
+        <member name="M:OSharp.HttpClient.HttpClientUtility.HttpPostJson(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            POST with Json.
+            </summary>
+            <param name="url">Http uri.</param>
+            <param name="args">Parameter dictionary.</param>
+            <param name="argsHeader">Header dictionary.</param>
+            <returns></returns>
+        </member>
+        <member name="M:OSharp.HttpClient.HttpClientUtility.HttpPutJson(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            PUT with Json.
+            </summary>
+            <param name="url">Http uri.</param>
+            <param name="args">Parameter dictionary.</param>
+            <param name="argsHeader">Header dictionary.</param>
+            <returns></returns>
+        </member>
+        <member name="T:OSharp.V1.Beatmap.BeatmapApprovedState">
+            <summary>
+            Beatmap approved state option.
+            </summary>
+        </member>
+        <member name="F:OSharp.V1.Beatmap.BeatmapApprovedState.Graveyard">
+            <summary>
+            Graveyard beatmap.
+            </summary>
+        </member>
+        <member name="F:OSharp.V1.Beatmap.BeatmapApprovedState.Pending">
+            <summary>
+            Pending and WIP beatmap.
+            </summary>
+        </member>
+        <member name="F:OSharp.V1.Beatmap.BeatmapApprovedState.Ranked">
+            <summary>
+            Ranked beatmap.
+            </summary>
+        </member>
+        <member name="F:OSharp.V1.Beatmap.BeatmapApprovedState.Approved">
+            <summary>
+            Approved beatmap.
+            </summary>
+        </member>
+        <member name="F:OSharp.V1.Beatmap.BeatmapApprovedState.Qualified">
+            <summary>
+            Qualified beatmap.
+            </summary>
+        </member>
+        <member name="F:OSharp.V1.Beatmap.BeatmapApprovedState.Loved">
+            <summary>
+            Loved beatmap.
+            </summary>
+        </member>
+        <member name="T:OSharp.V1.Beatmap.BeatmapId">
+            <summary>
+            Beatmap ID.
+            </summary>
+        </member>
+        <member name="M:OSharp.V1.Beatmap.BeatmapId.#ctor(System.Int64)">
+            <summary>
+            Initialize a beatmap ID.
+            </summary>
+            <param name="mapId">Beatmap ID.</param>
+        </member>
+        <member name="M:OSharp.V1.Beatmap.BeatmapId.#ctor(System.String)">
+            <summary>
+            Initialize a beatmap ID.
+            </summary>
+            <param name="mapId">Beatmap ID.</param>
+        </member>
+        <member name="T:OSharp.V1.Beatmap.BeatmapSetId">
+            <summary>
+            Beatmap-set ID.
+            </summary>
+        </member>
+        <member name="M:OSharp.V1.Beatmap.BeatmapSetId.#ctor(System.Int64)">
+            <summary>
+            Initialize a beatmap-set ID.
+            </summary>
+            <param name="setId">Beatmap-set ID.</param>
+        </member>
+        <member name="M:OSharp.V1.Beatmap.BeatmapSetId.#ctor(System.String)">
+            <summary>
+            Initialize a beatmap-set ID.
+            </summary>
+            <param name="setId">Beatmap-set ID.</param>
+        </member>
+        <member name="T:OSharp.V1.Beatmap.BeatmapComponent">
+            <summary>
+            Presents a beatmap or a beatmap-set, it can be from beatmap ID and beatmap set ID.
+            </summary>
+        </member>
+        <member name="M:OSharp.V1.Beatmap.BeatmapComponent.#ctor(System.Int64,OSharp.V1.Beatmap.BeatmapComponent.Type)">
+            <summary>
+            Initialize a beatmap or a beatmap set.
+            </summary>
+            <param name="id">Beatmap id or beatmap-set ID.</param>
+            <param name="idType">Specify the ID which is a beatmap ID or a beatmap-set ID.</param>
+        </member>
+        <member name="P:OSharp.V1.Beatmap.BeatmapComponent.Id">
+            <summary>
+            Beatmap id or beatmap-set ID.
+            </summary>
+        </member>
+        <member name="P:OSharp.V1.Beatmap.BeatmapComponent.IdType">
+            <summary>
+            Get this ID type which is a beatmap ID or a beatmap-set ID.
+            </summary>
+        </member>
+        <member name="M:OSharp.V1.Beatmap.BeatmapComponent.FromMapId(System.Int64)">
+            <summary>
+            Initialize a beatmap ID.
+            </summary>
+            <param name="id">Beatmap ID.</param>
+            <returns>Beatmap ID.</returns>
+        </member>
+        <member name="M:OSharp.V1.Beatmap.BeatmapComponent.FromMapId(System.String)">
+            <summary>
+            Initialize a beatmap ID.
+            </summary>
+            <param name="id">Beatmap ID.</param>
+            <returns>Beatmap ID.</returns>
+        </member>
+        <member name="M:OSharp.V1.Beatmap.BeatmapComponent.FromSetId(System.Int64)">
+            <summary>
+            Initialize a beatmap-set ID.
+            </summary>
+            <param name="id">Beatmap-set ID.</param>
+            <returns>Beatmap-set ID.</returns>
+        </member>
+        <member name="M:OSharp.V1.Beatmap.BeatmapComponent.FromSetId(System.String)">
+            <summary>
+            Initialize a beatmap-set ID.
+            </summary>
+            <param name="id">Beatmap-set ID.</param>
+            <returns>Beatmap-set ID.</returns>
+        </member>
+        <member name="T:OSharp.V1.Beatmap.BeatmapComponent.Type">
+            <summary>
+            Beatmap type option.
+            </summary>
+        </member>
+        <member name="F:OSharp.V1.Beatmap.BeatmapComponent.Type.Beatmap">
+            <summary>
+            Presents a beatmap.
+            </summary>
+        </member>
+        <member name="F:OSharp.V1.Beatmap.BeatmapComponent.Type.BeatmapSet">
+            <summary>
+            Presents a beatmap-set.
+            </summary>
+        </member>
+        <member name="M:OSharp.V1.Beatmap.BeatmapComponent.ToString">
+            <summary>
+            Get the ID string value of the beatmap/beatmap-set.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:OSharp.V1.Beatmap.BeatmapConvertOption">
+            <summary>
+            Specify whether converted beatmaps are included.
+            </summary>
+        </member>
+        <member name="F:OSharp.V1.Beatmap.BeatmapConvertOption.NotIncluded">
+            <summary>
+            Converted beatmaps are NOT included.
+            </summary>
+        </member>
+        <member name="F:OSharp.V1.Beatmap.BeatmapConvertOption.Included">
+            <summary>
+            Converted beatmaps are included.
+            </summary>
+        </member>
+        <member name="T:OSharp.V1.Beatmap.BeatmapExtra">
+            <summary>
+            Beatmap extra metadata and methods.
+            </summary>
+        </member>
+        <member name="M:OSharp.V1.Beatmap.BeatmapExtra.#ctor(OSharp.V1.Beatmap.OsuBeatmap)">
+            <summary>
+            Initialize beatmap extra class with beatmap.
+            </summary>
+            <param name="beatmap">Specified osu beatmap.</param>
+        </member>
+        <member name="P:OSharp.V1.Beatmap.BeatmapExtra.ThumbnailUri">
+            <summary>
+            Get uri of map thumbnail of the map.
+            </summary>
+        </member>
+        <member name="P:OSharp.V1.Beatmap.BeatmapExtra.BeatmapSetUri">
+            <summary>
+            Get uri of beatmap-set of the map.
+            </summary>
+        </member>
+        <member name="P:OSharp.V1.Beatmap.BeatmapExtra.BeatmapUri">
+            <summary>
+            Get uri of beatmap of the map.
+            </summary>
+        </member>
+        <member name="P:OSharp.V1.Beatmap.BeatmapExtra.DownloadUri">
+            <summary>
+            Get download uri of the map.
+            </summary>
+        </member>
+        <member name="P:OSharp.V1.Beatmap.BeatmapExtra.DownloadWithoutVideoUri">
+            <summary>
+            Get NO-VIDEO download URI of the map.
+            </summary>
+        </member>
+        <member name="P:OSharp.V1.Beatmap.BeatmapExtra.OsuDirectUri">
+            <summary>
+            Get osu!direct URI of the map.
+            </summary>
+        </member>
+        <member name="T:OSharp.V1.Beatmap.BeatmapGenre">
+            <summary>
+            Beatmap genre.
+            Note that there's no 8.
+            </summary>
+        </member>
+        <member name="F:OSharp.V1.Beatmap.BeatmapGenre.Any">
+            <summary>
+            Any genres are included.
+            </summary>
+        </member>
+        <member name="F:OSharp.V1.Beatmap.BeatmapGenre.Unspecified">
+            <summary>
+            Unspecified genre.
+            </summary>
+        </member>
+        <member name="F:OSharp.V1.Beatmap.BeatmapGenre.VideoGame">
+            <summary>
+            VideoGame genre.
+            </summary>
+        </member>
+        <member name="F:OSharp.V1.Beatmap.BeatmapGenre.Anime">
+            <summary>
+            Anime genre.
+            </summary>
+        </member>
+        <member name="F:OSharp.V1.Beatmap.BeatmapGenre.Rock">
+            <summary>
+            Rock genre.
+            </summary>
+        </member>
+        <member name="F:OSharp.V1.Beatmap.BeatmapGenre.Pop">
+            <summary>
+            Pop genre.
+            </summary>
+        </member>
+        <member name="F:OSharp.V1.Beatmap.BeatmapGenre.Other">
+            <summary>
+            Other genre.
+            </summary>
+        </member>
+        <member name="F:OSharp.V1.Beatmap.BeatmapGenre.Novelty">
+            <summary>
+            Novelty genre.
+            </summary>
+        </member>
+        <member name="F:OSharp.V1.Beatmap.BeatmapGenre.HipHop">
+            <summary>
+            HipHop genre.
+            </summary>
+        </member>
+        <member name="F:OSharp.V1.Beatmap.BeatmapGenre.Electronic">
+            <summary>
+            Electronic genre.
+            </summary>
+        </member>
+        <member name="T:OSharp.V1.Beatmap.BeatmapLanguage">
+            <summary>
+            Beatmap language.
+            </summary>
+        </member>
+        <member name="F:OSharp.V1.Beatmap.BeatmapLanguage.Any">
+            <summary>
+            Any languages are included.
+            </summary>
+        </member>
+        <member name="F:OSharp.V1.Beatmap.BeatmapLanguage.Other">
+            <summary>
+            Other languages.
+            </summary>
+        </member>
+        <member name="F:OSharp.V1.Beatmap.BeatmapLanguage.English">
+            <summary>
+            Other languages.
+            </summary>
+        </member>
+        <member name="F:OSharp.V1.Beatmap.BeatmapLanguage.Japanese">
+            <summary>
+            Japanese language.
+            </summary>
+        </member>
+        <member name="F:OSharp.V1.Beatmap.BeatmapLanguage.Chinese">
+            <summary>
+            Chinese language.
+            </summary>
+        </member>
+        <member name="F:OSharp.V1.Beatmap.BeatmapLanguage.Instrumental">
+            <summary>
+            Instrumental music without vocals.
+            </summary>
+        </member>
+        <member name="F:OSharp.V1.Beatmap.BeatmapLanguage.Korean">
+            <summary>
+            Korean language.
+            </summary>
+        </member>
+        <member name="F:OSharp.V1.Beatmap.BeatmapLanguage.French">
+            <summary>
+            French language.
+            </summary>
+        </member>
+        <member name="F:OSharp.V1.Beatmap.BeatmapLanguage.German">
+            <summary>
+            German language.
+            </summary>
+        </member>
+        <member name="F:OSharp.V1.Beatmap.BeatmapLanguage.Swedish">
+            <summary>
+            Swedish language.
+            </summary>
+        </member>
+        <member name="F:OSharp.V1.Beatmap.BeatmapLanguage.Spanish">
+            <summary>
+            Spanish language.
+            </summary>
+        </member>
+        <member name="F:OSharp.V1.Beatmap.BeatmapLanguage.Italian">
+            <summary>
+            Italian language.
+            </summary>
+        </member>
+        <member name="P:OSharp.V1.Beatmap.OsuBeatmap.HitLength">
+            <summary>
+            Seconds from first note to last note not including breaks.
+            </summary>
+        </member>
+        <member name="P:OSharp.V1.Beatmap.OsuBeatmap.TotalLength">
+            <summary>
+            Seconds from first note to last note including breaks.
+            </summary>
+        </member>
+        <member name="M:OSharp.V1.Internal.OsrBinaryUtility.WriteString(System.IO.BinaryWriter,System.String)">
+            <summary>
+            Write binary String.
+            </summary>
+            <param name="binWriter">The main BinaryWriter.</param>
+            <param name="content">A string.</param>
+        </member>
+        <member name="M:OSharp.V1.Internal.OsrBinaryUtility.WriteByte(System.IO.BinaryWriter,System.String)">
+            <summary>
+            Write binary Byte.
+            </summary>
+            <param name="binWriter">The main BinaryWriter.</param>
+            <param name="content">A string.</param>
+        </member>
+        <member name="M:OSharp.V1.Internal.OsrBinaryUtility.WriteShort(System.IO.BinaryWriter,System.String)">
+            <summary>
+            Write binary Int16 (short).
+            </summary>
+            <param name="binWriter">The main BinaryWriter.</param>
+            <param name="content">A string.</param>
+        </member>
+        <member name="M:OSharp.V1.Internal.OsrBinaryUtility.WriteInteger(System.IO.BinaryWriter,System.String)">
+            <summary>
+            Write binary Int32 (int).
+            </summary>
+            <param name="binWriter">The main BinaryWriter.</param>
+            <param name="content">A string.</param>
+        </member>
+        <member name="M:OSharp.V1.Internal.OsrBinaryUtility.WriteDate(System.IO.BinaryWriter,System.String)">
+            <summary>
+            Write binary database timestamp.
+            </summary>
+            <param name="binWriter">The main BinaryWriter.</param>
+            <param name="dateString">A date parsed as a string.</param>
+        </member>
+        <member name="M:OSharp.V1.Internal.OsrBinaryUtility.ComputeMd5Hash(System.String)">
+            <summary>
+            Calculate MD5Hash
+            </summary>
+            <param name="input">Decoded MD5 string.</param>
+            <returns></returns>
+        </member>
+        <member name="M:OSharp.V1.Internal.OsrBinaryUtility.GetUnixTimestamp(System.DateTime)">
+            <summary>
+            Get unix timestamp.
+            </summary>
+            <param name="date">A date from DateTime.</param>
+            <returns></returns>
+        </member>
+        <member name="P:OSharp.V1.MultiPlayer.OsuMatchGame.MatchType">
+            <summary>
+            Couldn't find.
+            </summary>
+        </member>
+        <member name="P:OSharp.V1.MultiPlayer.OsuMatchScore.Slot">
+            <summary>
+            Index of player's slot (from 0).
+            </summary>
+        </member>
+        <member name="P:OSharp.V1.MultiPlayer.OsuMatchScore.Team">
+            <summary>
+            0 = No team, 1 = Blue, 2 = Red.
+            </summary>
+        </member>
+        <member name="M:OSharp.V1.OsuClient.#ctor(System.String)">
+            <summary>
+            Create a client to handle api connections.
+            </summary>
+            <param name="key">Osu api key. See: https://osu.ppy.sh/p/api. </param>
+        </member>
+        <member name="M:OSharp.V1.OsuClient.GetBeatmaps(System.DateTimeOffset,System.Nullable{System.Int32})">
+            <summary>
+            Retrieve general beatmap information.
+            </summary>
+            <param name="since">Return all beatmaps ranked since this date.</param>
+            <param name="limitCount">Amount of results (1 - 500). Default value is 500.</param>
+            <returns>Fetched beatmaps.</returns>
+        </member>
+        <member name="M:OSharp.V1.OsuClient.GetBeatmaps(OSharp.V1.Beatmap.BeatmapSetId,OSharp.V1.Beatmap.ConvertibleGameMode,System.Nullable{System.Int32})">
+            <summary>
+            Retrieve general beatmap information.
+            </summary>
+            <param name="beatmapSetId">Specify a beatmap set id.</param>
+            <param name="gameMode">Specify the game mode.</param>
+            <param name="limitCount">Amount of results (1 - 500). Default value is 500.</param>
+            <returns>Fetched beatmaps.</returns>
+        </member>
+        <member name="M:OSharp.V1.OsuClient.GetBeatmapSet(OSharp.V1.Beatmap.BeatmapSetId)">
+            <summary>
+            Retrieve general beatmap set information.
+            </summary>
+            <param name="beatmapSetId">Specify a beatmap set id.</param>
+            <returns>Fetched beatmaps.</returns>
+        </member>
+        <member name="M:OSharp.V1.OsuClient.GetBeatmapSet(OSharp.V1.Beatmap.BeatmapId)">
+            <summary>
+            Retrieve general beatmap set information.
+            </summary>
+            <param name="beatmapId">Specify a beatmap set id.</param>
+            <returns>Fetched beatmaps.</returns>
+        </member>
+        <member name="M:OSharp.V1.OsuClient.GetBeatmap(OSharp.V1.Beatmap.BeatmapId)">
+            <summary>
+            Retrieve general beatmap information.
+            </summary>
+            <param name="beatmapId">Specify a beatmap id.</param>
+            <returns>Fetched beatmap.</returns>
+        </member>
+        <member name="M:OSharp.V1.OsuClient.GetBeatmaps(OSharp.V1.User.UserComponent,OSharp.V1.Beatmap.ConvertibleGameMode,System.Nullable{System.Int32})">
+            <summary>
+            Retrieve general beatmap information.
+            </summary>
+            <param name="nameOrId">Specify a user or a username to return metadata from.</param>
+            <param name="gameMode">Specify the game mode.</param>
+            <param name="limitCount">Amount of results (1 - 500). Default value is 500.</param>
+            <returns>Fetched beatmaps.</returns>
+        </member>
+        <member name="M:OSharp.V1.OsuClient.GetBeatmap(System.String)">
+            <summary>
+            Retrieve general beatmap information.
+            </summary>
+            <param name="hash">The beatmap hash. It can be used, for instance, if you're trying to get what beatmap has a replay played in, as .osr replays only provide beatmap hashes (example of hash: a5b99395a42bd55bc5eb1d2411cbdf8b).</param>
+            <returns>Fetched beatmap.</returns>
+        </member>
+        <member name="M:OSharp.V1.OsuClient.GetUsers(OSharp.V1.User.UserComponent,System.Nullable{OSharp.V1.GameMode},System.Nullable{System.Int32})">
+            <summary>
+            Retrieve general user information.
+            </summary>
+            <param name="nameOrId">Specify a user id or a username to return metadata from.</param>
+            <param name="gameMode">Specify the game mode. Default value is 0.</param>
+            <param name="eventDays">Max number of days between now and last event date (1 - 31). Default value is 1.</param>
+            <returns>Fetched users.</returns>
+        </member>
+        <member name="M:OSharp.V1.OsuClient.GetScores(OSharp.V1.Beatmap.BeatmapId,OSharp.V1.User.UserComponent,System.Nullable{OSharp.V1.GameMode},System.Nullable{OSharp.V1.Mod},System.Nullable{System.Int32})">
+            <summary>
+            Retrieve information about the top 100 scores of a specified beatmap.
+            </summary>
+            <param name="beatmapId">Specify a beatmap id to return score information from.</param>
+            <param name="nameOrId">Specify a user id or a user name to return score information for.</param>
+            <param name="gameMode">Specify the game mode. Default value is 0.</param>
+            <param name="mods">Specify a mod or mod combination.</param>
+            <param name="limitCount">Amount of results from the top (1 - 100). Default value is 50.</param>
+            <returns>Fetched scores.</returns>
+        </member>
+        <member name="M:OSharp.V1.OsuClient.GetUserBestScores(OSharp.V1.User.UserComponent,System.Nullable{OSharp.V1.GameMode},System.Nullable{System.Int32})">
+            <summary>
+            Retrieve information about top scores for a specified user.
+            </summary>
+            <param name="nameOrId">Specify a user_id or a username to return score information for.</param>
+            <param name="gameMode">Specify the game mode. Default value is 0.</param>
+            <param name="limitCount">Amount of results (1 - 100). Default value is 10.</param>
+            <returns>Fetched user's best scores.</returns>
+        </member>
+        <member name="M:OSharp.V1.OsuClient.GetUserRecentScores(OSharp.V1.User.UserComponent,System.Nullable{OSharp.V1.GameMode},System.Nullable{System.Int32})">
+            <summary>
+            Retrieve information about recent plays over the last 24 hours for a specified user.
+            </summary>
+            <param name="nameOrId">Specify a user_id or a username to return score information for.</param>
+            <param name="gameMode">Specify the game mode. Default value is 0.</param>
+            <param name="limitCount">Amount of results (1 - 50). Default value is 10.</param>
+            <returns>Fetched user's recent scores.</returns>
+        </member>
+        <member name="M:OSharp.V1.OsuClient.GetMatch(System.Int32)">
+            <summary>
+            Retrieve information about multi-player match.
+            </summary>
+            <param name="matchId">Match id to get information from.</param>
+            <returns>Fetched multi-player lobby.</returns>
+        </member>
+        <member name="M:OSharp.V1.OsuClient.GetReplay(OSharp.V1.GameMode,OSharp.V1.User.UserComponent,OSharp.V1.Beatmap.BeatmapId)">
+            <summary>
+            Retrieve information about replay data of the specified user's score on a map.
+            </summary>
+            <param name="gameMode">The mode the score was played in.</param>
+            <param name="nameOrId">The user that has played the beatmap.</param>
+            <param name="beatmapId">The beatmap ID in which the replay was played.</param>
+            <returns>Fetched replay data.</returns>
+        </member>
+        <member name="T:OSharp.V2.Authorization.AuthorizationLinkBuilder">
+            <summary>
+            Authorization URI builder.
+            For more details, see: https://github.com/int-and-his-friends/osu-api-v2/wiki/Authorization-code
+            </summary>
+        </member>
+        <member name="M:OSharp.V2.Authorization.AuthorizationLinkBuilder.#ctor(System.Int32)">
+            <summary>
+            Initialize authorization link builder with client ID.
+            </summary>
+            <param name="clientId">Your API V2 client ID.</param>
+        </member>
+        <member name="M:OSharp.V2.Authorization.AuthorizationLinkBuilder.BuildLink(System.Uri,System.String,OSharp.V2.Authorization.AuthorizationScope)">
+            <summary>
+            Build Authorization URI.
+            </summary>
+            <param name="redirectUri">Client redirect URI (URL encoded)</param>
+            <param name="tag">Identifying tag. This tag will be transmitted both sent link and callback link.</param>
+            <param name="scope">Access scope option.</param>
+            <returns>Generated user authorization link.</returns>
+        </member>
+        <member name="T:OSharp.V2.Authorization.AuthorizationScope">
+            <summary>
+            Access scope option.
+            </summary>
+        </member>
+        <member name="F:OSharp.V2.Authorization.AuthorizationScope.All">
+            <summary>
+            Access all scope.
+            </summary>
+        </member>
+        <member name="F:OSharp.V2.Authorization.AuthorizationScope.FriendsRead">
+            <summary>
+            Access friends-read scope.
+            </summary>
+        </member>
+        <member name="F:OSharp.V2.Authorization.AuthorizationScope.Identify">
+            <summary>
+            Access identify scope.
+            </summary>
+        </member>
+        <member name="T:OSharp.V2.Authorization.AuthorizationScopeExtension">
+            <summary>
+            AuthorizationScope enum extensions.
+            </summary>
+        </member>
+        <member name="M:OSharp.V2.Authorization.AuthorizationScopeExtension.GetRequestArray(OSharp.V2.Authorization.AuthorizationScope)">
+            <summary>
+            Get the api-supported string array of the specified scope option.
+            </summary>
+            <param name="scopeOption">Access scope option.</param>
+            <returns></returns>
+        </member>
+        <member name="T:OSharp.V2.Client.Client">
+            <summary>
+            OSU API V2 client.
+            </summary>
+        </member>
+        <member name="P:OSharp.V2.Client.Client.Id">
+            <summary>
+            Client ID.
+            </summary>
+        </member>
+        <member name="P:OSharp.V2.Client.Client.UserId">
+            <summary>
+            Owner of the client.
+            </summary>
+        </member>
+        <member name="P:OSharp.V2.Client.Client.Name">
+            <summary>
+            Client name.
+            </summary>
+        </member>
+        <member name="P:OSharp.V2.Client.Client.Secret">
+            <summary>
+            Client secret.
+            </summary>
+        </member>
+        <member name="P:OSharp.V2.Client.Client.Redirect">
+            <summary>
+            Specified redirect URI after authorization. (URL encoded)
+            </summary>
+        </member>
+        <member name="P:OSharp.V2.Client.Client.PersonalAccessClient">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OSharp.V2.Client.Client.PasswordClient">
+            <summary>
+            Whether the client uses password.
+            </summary>
+        </member>
+        <member name="P:OSharp.V2.Client.Client.Revoked">
+            <summary>
+            Whether the client is revoked.
+            </summary>
+        </member>
+        <member name="P:OSharp.V2.Client.Client.UpdatedAt">
+            <summary>
+            Latest updating time of the client.
+            </summary>
+        </member>
+        <member name="P:OSharp.V2.Client.Client.CreatedAt">
+            <summary>
+            Creation time of the client.
+            </summary>
+        </member>
+        <member name="T:OSharp.V2.Client.ClientManager">
+            <summary>
+            Manager of osu! api v2 Client.
+            For more details, see: https://github.com/int-and-his-friends/osu-api-v2/wiki/Oauth-clients
+            </summary>
+        </member>
+        <member name="P:OSharp.V2.Client.ClientManager.CsrfToken">
+            <summary>
+            Get the CSRF Token.
+            </summary>
+        </member>
+        <member name="P:OSharp.V2.Client.ClientManager.OsuSession">
+            <summary>
+            Get the osu session.
+            </summary>
+        </member>
+        <member name="M:OSharp.V2.Client.ClientManager.#ctor(System.String,System.String)">
+            <summary>
+            Initialize a client manager.
+            Grab the headers on the web page with user logged in: https://osu.ppy.sh/oauth/clients.
+            </summary>
+            <param name="csrfToken">CSRF token.</param>
+            <param name="osuSession">Session in the cookie. This can be ignored after the first success request.</param>
+        </member>
+        <member name="M:OSharp.V2.Client.ClientManager.#ctor(System.String)">
+            <summary>
+            Initialize a client manager.
+            </summary>
+            <param name="csrfToken">CSRF token.</param>
+        </member>
+        <member name="M:OSharp.V2.Client.ClientManager.CreateClient(System.String,System.Uri)">
+            <summary>
+            Create a client.
+            </summary>
+            <param name="name">Client name.</param>
+            <param name="redirectUri">Redirect URI.</param>
+            <returns>OSU API V2 client.</returns>
+        </member>
+        <member name="M:OSharp.V2.Client.ClientManager.GetClients">
+            <summary>
+            Get clients which were created.
+            </summary>
+        </member>
+        <member name="M:OSharp.V2.Client.ClientManager.EditClient(System.Int32,System.String,System.Uri)">
+            <summary>
+            Edit specified client which is created.
+            </summary>
+            <param name="clientId">Client ID.</param>
+            <param name="newName">New client name.</param>
+            <param name="newRedirectUri">New redirect URI.</param>
+        </member>
+        <member name="M:OSharp.V2.Client.ClientManager.RevokeClient(System.Int32)">
+            <summary>
+            Revoke specified client.
+            </summary>
+            <param name="clientId">Client ID.</param>
+        </member>
+    </members>
+</doc>

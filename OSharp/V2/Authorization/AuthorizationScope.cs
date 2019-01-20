@@ -4,14 +4,29 @@ using System.Linq;
 
 namespace OSharp.V2.Authorization
 {
+    /// <summary>
+    /// Access scope option.
+    /// </summary>
     [Flags]
     public enum AuthorizationScope
     {
+        /// <summary>
+        /// Access all scope.
+        /// </summary>
+        All = 0x0,
+        /// <summary>
+        /// Access friends-read scope.
+        /// </summary>
         FriendsRead = 0x1,
-        Identify = 0x2,
-        All = FriendsRead | Identify
+        /// <summary>
+        /// Access identify scope.
+        /// </summary>
+        Identify = 0x2
     }
 
+    /// <summary>
+    /// AuthorizationScope enum extensions.
+    /// </summary>
     public static class AuthorizationScopeExtension
     {
         private static readonly IReadOnlyDictionary<AuthorizationScope, string> AuthDictionary =
@@ -21,9 +36,14 @@ namespace OSharp.V2.Authorization
                 [AuthorizationScope.Identify] = "identify",
             };
 
+        /// <summary>
+        /// Get the api-supported string array of the specified scope option.
+        /// </summary>
+        /// <param name="scopeOption">Access scope option.</param>
+        /// <returns></returns>
         public static string[] GetRequestArray(this AuthorizationScope scopeOption)
         {
-            return scopeOption == AuthorizationScope.All
+            return scopeOption.HasFlag(AuthorizationScope.All)
                 ? AuthDictionary.Select(k => k.Value).ToArray()
                 : GetFlags<AuthorizationScope>(scopeOption).Select(scope => AuthDictionary[scope]).ToArray();
         }
