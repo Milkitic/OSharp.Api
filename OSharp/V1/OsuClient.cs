@@ -15,8 +15,14 @@ using OSharp.V1.User;
 
 namespace OSharp.V1
 {
+    /// <summary>
+    /// Client to access osu!API via HTTP connection.
+    /// </summary>
     public class OsuClient
-    {
+    { 
+        /// <summary>
+        /// Osu api key.
+        /// </summary>
         public Key Key { get; }
         private static readonly HttpClientUtility HttpClientUtility = new HttpClientUtility();
 
