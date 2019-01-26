@@ -20,23 +20,23 @@ namespace OSharp.V1.Beatmap
         }
 
         /// <summary>
-        /// Get uri of map thumbnail of the map.
+        /// Get thumbnail URI of the beatmap.
         /// </summary>
         public Uri ThumbnailUri => new Uri($"{Link.BeatmapSetThumbUri}{_beatmap.BeatmapSetId}l.jpg");
         /// <summary>
-        /// Get uri of beatmap-set of the map.
+        /// Get URI of the beatmap's beatmap-set page.
         /// </summary>
         public Uri BeatmapSetUri => new Uri($"{Link.BeatmapSetUri}{_beatmap.BeatmapSetId}l.jpg");
         /// <summary>
-        /// Get uri of beatmap of the map.
+        /// Get URI of the beatmap page.
         /// </summary>
         public Uri BeatmapUri => new Uri($"{Link.BeatmapUri}{_beatmap.BeatmapId}l.jpg");
         /// <summary>
-        /// Get download uri of the map.
+        /// Get download URI of the map.
         /// </summary>
         public Uri DownloadUri => new Uri($"{Link.BeatmapDownloadUri}{_beatmap.BeatmapSetId}");
         /// <summary>
-        /// Get NO-VIDEO download URI of the map.
+        /// Get no-video download URI of the map.
         /// </summary>
         public Uri DownloadWithoutVideoUri => new Uri($"{Link.BeatmapDownloadUri}{_beatmap.BeatmapSetId}n");
         /// <summary>
