@@ -229,27 +229,27 @@
         </member>
         <member name="P:OSharp.V1.Beatmap.BeatmapExtra.ThumbnailUri">
             <summary>
-            Get uri of map thumbnail of the map.
+            Get thumbnail URI of the beatmap.
             </summary>
         </member>
         <member name="P:OSharp.V1.Beatmap.BeatmapExtra.BeatmapSetUri">
             <summary>
-            Get uri of beatmap-set of the map.
+            Get URI of the beatmap's beatmap-set page.
             </summary>
         </member>
         <member name="P:OSharp.V1.Beatmap.BeatmapExtra.BeatmapUri">
             <summary>
-            Get uri of beatmap of the map.
+            Get URI of the beatmap page.
             </summary>
         </member>
         <member name="P:OSharp.V1.Beatmap.BeatmapExtra.DownloadUri">
             <summary>
-            Get download uri of the map.
+            Get download URI of the map.
             </summary>
         </member>
         <member name="P:OSharp.V1.Beatmap.BeatmapExtra.DownloadWithoutVideoUri">
             <summary>
-            Get NO-VIDEO download URI of the map.
+            Get no-video download URI of the map.
             </summary>
         </member>
         <member name="P:OSharp.V1.Beatmap.BeatmapExtra.OsuDirectUri">
@@ -1814,42 +1814,42 @@
         </member>
         <member name="P:OSharp.V1.User.UserExtra.UserPageUri">
             <summary>
-            Get uri of the user page.
+            Get URI of the user page.
             </summary>
         </member>
         <member name="P:OSharp.V1.User.UserExtra.AvatarUri">
             <summary>
-            Get avatar image uri of the user.
+            Get avatar image URI of the user.
             </summary>
         </member>
         <member name="P:OSharp.V1.User.UserExtra.FlagUri">
             <summary>
-            Get flag image uri of the user.
+            Get flag image URI of the user.
             </summary>
         </member>
         <member name="P:OSharp.V1.User.UserExtra.OsuStatsUri">
             <summary>
-            Get uri of the user's osu!status page.
+            Get URI of the user's osu!status page.
             </summary>
         </member>
         <member name="P:OSharp.V1.User.UserExtra.OsuTrackUri">
             <summary>
-            Get uri of the user's osu!track page.
+            Get URI of the user's osu!track page.
             </summary>
         </member>
         <member name="P:OSharp.V1.User.UserExtra.OsuSkillsUri">
             <summary>
-            Get uri of the user's osu!status page.
+            Get URI of the user's osu!status page.
             </summary>
         </member>
         <member name="P:OSharp.V1.User.UserExtra.OsuChanUri">
             <summary>
-            Get uri of the user's osu!chan page.
+            Get URI of the user's osu!chan page.
             </summary>
         </member>
         <member name="P:OSharp.V1.User.UserExtra.PpPlusUri">
             <summary>
-            Get uri of the user's PP Plus page.
+            Get URI of the user's PP Plus page.
             </summary>
         </member>
         <member name="T:OSharp.V2.Authorization.AuthorizationLinkBuilder">
