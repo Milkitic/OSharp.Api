@@ -15,8 +15,10 @@
         }
 
         private readonly string _value;
-        
+
+        /// <summary />
         public static implicit operator Key(string value) => new Key(value);
+        /// <summary />
         public static implicit operator string(Key key) => key.ToString();
 
         /// <summary>

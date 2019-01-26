@@ -4,8 +4,14 @@ using OSharp.V1.Internal;
 
 namespace OSharp.V1.Score
 {
+    /// <summary>
+    /// User recent API model.
+    /// </summary>
     public class OsuUserRecent : IScore
     {
+        /// <summary>
+        /// Beatmap ID.
+        /// </summary>
         [JsonProperty("beatmap_id")]
         [JsonConverter(typeof(ParseStringConverter))]
         public long BeatmapId { get; set; }
@@ -49,6 +55,9 @@ namespace OSharp.V1.Score
         [JsonProperty("perfect")]
         private int PerfectInt { get; set; }
 
+        /// <summary>
+        /// Enabled mods of the score.
+        /// </summary>
         [JsonProperty("enabled_mods")]
         public Mod EnabledMods { get; set; }
 
@@ -57,8 +66,15 @@ namespace OSharp.V1.Score
         [JsonConverter(typeof(ParseStringConverter))]
         public long UserId { get; set; }
 
+        /// <summary>
+        /// Score date. (UTC)
+        /// </summary>
         [JsonIgnore]
         public DateTimeOffset Date => DateTimeOffset.Parse(DateString);
+
+        /// <summary>
+        /// Score date string. (UTC)
+        /// </summary>
         [JsonProperty("date")]
         public string DateString { get; set; }
 

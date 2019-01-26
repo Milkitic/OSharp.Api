@@ -2,8 +2,17 @@
 
 namespace OSharp.V1.Score
 {
+    /// <summary>
+    /// Score extension methods.
+    /// </summary>
     public static class ScoreExtension
     {
+        /// <summary>
+        /// Get the specified score's accuracy.
+        /// </summary>
+        /// <param name="score">Play score.</param>
+        /// <param name="beatmap">The same play's beatmap.</param>
+        /// <returns></returns>
         public static double GetAccuracy(this IScore score, OsuBeatmap beatmap)
         {
             float accuracy = 0;

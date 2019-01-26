@@ -134,6 +134,7 @@ namespace OSharp.V1
         /// ScoreV2 mod.
         /// </summary>
         ScoreV2 =     0x20000000,
+        /// <summary />
         LastMod =     0x40000000,
         /// <summary>
         /// Use key mod.

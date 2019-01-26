@@ -79,7 +79,7 @@ namespace OSharp.V1.Score
         public DateTimeOffset Date => DateTimeOffset.Parse(DateString);
 
         /// <summary>
-        /// Score string. (UTC)
+        /// Score date string. (UTC)
         /// </summary>
         [JsonProperty("date")]
         public string DateString { get; set; }

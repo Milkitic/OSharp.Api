@@ -5,7 +5,10 @@ using OSharp.V1.Internal;
 using OSharp.V1.Score;
 
 namespace OSharp.V1.Replay
-{
+{  
+    /// <summary>
+    /// Replay extra metadata and methods.
+    /// </summary>
     public class ReplayExtra
     {
         private readonly OsuReplay _replay;
@@ -13,6 +16,12 @@ namespace OSharp.V1.Replay
         private readonly OsuBeatmap _beatmap;
         private byte[] _data;
 
+        /// <summary>
+        /// Initialize user extra class.
+        /// </summary>
+        /// <param name="replay">Specified play's replay.</param>
+        /// <param name="score">The same play's score</param>
+        /// <param name="beatmap">The same play's beatmap</param>
         public ReplayExtra(OsuReplay replay, OsuPlayScore score, OsuBeatmap beatmap)
         {
             if (!replay.IsValid)
@@ -23,6 +32,11 @@ namespace OSharp.V1.Replay
             _beatmap = beatmap;
         }
 
+        /// <summary>
+        /// Get replay raw data.
+        /// </summary>
+        /// <param name="useCache">If this is enabled, the second time to execute the method will be faster.</param>
+        /// <returns></returns>
         public byte[] GetRawData(bool useCache = true)
         {
             if (useCache && _data != null)
@@ -77,6 +91,11 @@ namespace OSharp.V1.Replay
             return _data;
         }
 
+        /// <summary>
+        /// Save the raw replay data to a .osz file.
+        /// </summary>
+        /// <param name="path">A relative or absolute path for the file that will be saved.</param>
+        /// <param name="useCache"></param>
         public void SaveOsrFile(string path, bool useCache = true)
         {
             using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))

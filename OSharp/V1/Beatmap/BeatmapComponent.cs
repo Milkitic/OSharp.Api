@@ -45,7 +45,7 @@
     }
 
     /// <summary>
-    /// Presents a beatmap or a beatmap-set, it can be from beatmap ID and beatmap set ID.
+    /// Presents a beatmap or a beatmap-set. It can be from beatmap ID and beatmap set ID.
     /// </summary>
     public abstract class BeatmapComponent
     {
@@ -53,7 +53,7 @@
         /// Initialize a beatmap or a beatmap set.
         /// </summary>
         /// <param name="id">Beatmap id or beatmap-set ID.</param>
-        /// <param name="idType">Specify the ID which is a beatmap ID or a beatmap-set ID.</param>
+        /// <param name="idType">Specify the ID which is beatmap ID or beatmap-set ID.</param>
         protected BeatmapComponent(long id, Type idType)
         {
             Id = id;
@@ -64,8 +64,9 @@
         /// Beatmap id or beatmap-set ID.
         /// </summary>
         public long Id { get; }
+
         /// <summary>
-        /// Get this ID type which is a beatmap ID or a beatmap-set ID.
+        /// Get this ID type which is beatmap ID or beatmap-set ID.
         /// </summary>
         public Type IdType { get; }
 
@@ -75,18 +76,21 @@
         /// <param name="id">Beatmap ID.</param>
         /// <returns>Beatmap ID.</returns>
         public static BeatmapId FromMapId(long id) => new BeatmapId(id);
+
         /// <summary>
         /// Initialize a beatmap ID.
         /// </summary>
         /// <param name="id">Beatmap ID.</param>
         /// <returns>Beatmap ID.</returns>
         public static BeatmapId FromMapId(string id) => new BeatmapId(id);
+
         /// <summary>
         /// Initialize a beatmap-set ID.
         /// </summary>
         /// <param name="id">Beatmap-set ID.</param>
         /// <returns>Beatmap-set ID.</returns>
         public static BeatmapSetId FromSetId(long id) => new BeatmapSetId(id);
+
         /// <summary>
         /// Initialize a beatmap-set ID.
         /// </summary>
@@ -110,9 +114,9 @@
         }
 
         /// <summary>
-        /// Get the ID string value of the beatmap/beatmap-set.
+        /// Get the ID string value of the beatmap or beatmap-set.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>ID string.</returns>
         public override string ToString()
         {
             return Id.ToString();
