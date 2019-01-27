@@ -54,9 +54,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OSharp\OSharp.csproj">
+    <ProjectReference Include="..\OSharp\OSharp.Api.csproj">
       <Project>{3108ae4a-de35-40ae-a449-1efb9719367d}</Project>
-      <Name>OsuSharp</Name>
+      <Name>OSharp.Api</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
