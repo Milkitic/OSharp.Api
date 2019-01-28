@@ -1,4 +1,4 @@
-# OSharp
+# OSharp.Api
 ![](https://img.shields.io/badge/.NETStandard-2.0-blue.svg)
 ![](https://img.shields.io/badge/license-MIT-green.svg)
 
